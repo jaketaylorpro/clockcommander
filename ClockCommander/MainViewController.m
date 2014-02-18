@@ -13,11 +13,29 @@
 @end
 
 @implementation MainViewController
+@synthesize clockData,currentClockModifier,currentClockName,currentClockTimeId;
+
+NSString* DATABASE_NAME=@"com.jaketaylor.clockcommander";
+
+NSString* TABLE_CLOCK=@"clock";
+NSString* COLUMN_CLOCK_CLOCK_ID=@"clock_id";
+NSString* COLUMN_CLOCK_CLOCK_NAME=@"clock_name";
+NSString* COLUMN_CLOCK_MODIFIER=@"modifier";
+
+NSString* TABLE_CLOCK_TIME=@"clock_time";
+NSString* COLUMN_CLOCK_TIME_CLOCK_ID=@"clock_id";
+NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID=@"clock_time_id";
+NSString* COLUMN_CLOCK_TIME_START_DAY=@"start_day";
+NSString* COLUMN_CLOCK_TIME_START_TIME=@"start_time";
+NSString* COLUMN_CLOCK_TIME_END_TIME=@"end_time";
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self openSqlite];
+    [self loadClocks];
+    [self loadCurrentClockTime];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,5 +82,27 @@
         [self performSegueWithIdentifier:@"showAlternate" sender:sender];
     }
 }
-
+- (void)openSqlite
+{//TODO handle the case where the db is already open
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *sqlFile = [[paths objectAtIndex:0] stringByAppendingPathComponent:DATABASE_NAME];
+    sqlite3_open([sqlFile UTF8String], &my_dbname);//TODO error handling; check if returns SQLITE_OK
+}
+-(void)closeSqlite
+{
+    sqlite3_close(my_dbname);
+}
+-(void)createClockTime:(NSInteger)clockId :(NSInteger)startDay :(NSInteger)startTime
+{
+    NSString *insertStatement = [NSString stringWithFormat:
+                                 @"insert into %@ (%@) values (%@)"
+                                 ,TABLE_CLOCK_TIME
+                                 ,@[COLUMN_CLOCK_TIME_CLOCK_ID
+                                    ,COLUMN_CLOCK_TIME_START_DAY
+                                    ,COLUMN_CLOCK_TIME_START_TIME]
+                                 ,@[clockId
+                                    ,startDay
+                                    ,startTime]];
+    
+}
 @end

@@ -23,6 +23,17 @@
 		8F68EA4F18B2C11B004D150C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA2B18B2C11B004D150C /* UIKit.framework */; };
 		8F68EA5718B2C11B004D150C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA5518B2C11B004D150C /* InfoPlist.strings */; };
 		8F68EA5918B2C11B004D150C /* ClockCommanderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F68EA5818B2C11B004D150C /* ClockCommanderTests.m */; };
+		8F68EA6A18B2F5C8004D150C /* Icon.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6318B2F5C8004D150C /* Icon.pxm */; };
+		8F68EA6B18B2F5C8004D150C /* Icon1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6418B2F5C8004D150C /* Icon1024.png */; };
+		8F68EA6C18B2F5C8004D150C /* Icon1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6518B2F5C8004D150C /* Icon1136.png */; };
+		8F68EA6D18B2F5C8004D150C /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6618B2F5C8004D150C /* Icon120.png */; };
+		8F68EA6E18B2F5C8004D150C /* Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6718B2F5C8004D150C /* Icon58.png */; };
+		8F68EA6F18B2F5C8004D150C /* Icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6818B2F5C8004D150C /* Icon80.png */; };
+		8F68EA7018B2F5C8004D150C /* Icon960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA6918B2F5C8004D150C /* Icon960.png */; };
+		8F68EA7218B2F6EB004D150C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA7118B2F6EB004D150C /* Default-568h@2x.png */; };
+		8F68EA7418B3033B004D150C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA7318B3033B004D150C /* libsqlite3.dylib */; };
+		8F68EA7718B3043B004D150C /* green1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA7518B3043B004D150C /* green1.png */; };
+		8F68EA7818B3043B004D150C /* red1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA7618B3043B004D150C /* red1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +69,17 @@
 		8F68EA5418B2C11B004D150C /* ClockCommanderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClockCommanderTests-Info.plist"; sourceTree = "<group>"; };
 		8F68EA5618B2C11B004D150C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F68EA5818B2C11B004D150C /* ClockCommanderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClockCommanderTests.m; sourceTree = "<group>"; };
+		8F68EA6318B2F5C8004D150C /* Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Icon.pxm; sourceTree = "<group>"; };
+		8F68EA6418B2F5C8004D150C /* Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1024.png; sourceTree = "<group>"; };
+		8F68EA6518B2F5C8004D150C /* Icon1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1136.png; sourceTree = "<group>"; };
+		8F68EA6618B2F5C8004D150C /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
+		8F68EA6718B2F5C8004D150C /* Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58.png; sourceTree = "<group>"; };
+		8F68EA6818B2F5C8004D150C /* Icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon80.png; sourceTree = "<group>"; };
+		8F68EA6918B2F5C8004D150C /* Icon960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon960.png; sourceTree = "<group>"; };
+		8F68EA7118B2F6EB004D150C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8F68EA7318B3033B004D150C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8F68EA7518B3043B004D150C /* green1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green1.png; sourceTree = "<group>"; };
+		8F68EA7618B3043B004D150C /* red1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F68EA7418B3033B004D150C /* libsqlite3.dylib in Frameworks */,
 				8F68EA2A18B2C11B004D150C /* CoreGraphics.framework in Frameworks */,
 				8F68EA2C18B2C11B004D150C /* UIKit.framework in Frameworks */,
 				8F68EA2818B2C11B004D150C /* Foundation.framework in Frameworks */,
@@ -87,6 +110,7 @@
 		8F68EA1B18B2C11A004D150C = {
 			isa = PBXGroup;
 			children = (
+				8F68EA7118B2F6EB004D150C /* Default-568h@2x.png */,
 				8F68EA2D18B2C11B004D150C /* ClockCommander */,
 				8F68EA5218B2C11B004D150C /* ClockCommanderTests */,
 				8F68EA2618B2C11B004D150C /* Frameworks */,
@@ -106,6 +130,7 @@
 		8F68EA2618B2C11B004D150C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F68EA7318B3033B004D150C /* libsqlite3.dylib */,
 				8F68EA2718B2C11B004D150C /* Foundation.framework */,
 				8F68EA2918B2C11B004D150C /* CoreGraphics.framework */,
 				8F68EA2B18B2C11B004D150C /* UIKit.framework */,
@@ -134,6 +159,7 @@
 		8F68EA2E18B2C11B004D150C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8F68EA6218B2F5C8004D150C /* ClockCommanderArt */,
 				8F68EA2F18B2C11B004D150C /* ClockCommander-Info.plist */,
 				8F68EA3018B2C11B004D150C /* InfoPlist.strings */,
 				8F68EA3318B2C11B004D150C /* main.m */,
@@ -158,6 +184,22 @@
 				8F68EA5518B2C11B004D150C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F68EA6218B2F5C8004D150C /* ClockCommanderArt */ = {
+			isa = PBXGroup;
+			children = (
+				8F68EA7518B3043B004D150C /* green1.png */,
+				8F68EA7618B3043B004D150C /* red1.png */,
+				8F68EA6318B2F5C8004D150C /* Icon.pxm */,
+				8F68EA6418B2F5C8004D150C /* Icon1024.png */,
+				8F68EA6518B2F5C8004D150C /* Icon1136.png */,
+				8F68EA6618B2F5C8004D150C /* Icon120.png */,
+				8F68EA6718B2F5C8004D150C /* Icon58.png */,
+				8F68EA6818B2F5C8004D150C /* Icon80.png */,
+				8F68EA6918B2F5C8004D150C /* Icon960.png */,
+			);
+			path = ClockCommanderArt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,10 +278,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F68EA7018B2F5C8004D150C /* Icon960.png in Resources */,
 				8F68EA3E18B2C11B004D150C /* Main_iPad.storyboard in Resources */,
 				8F68EA4618B2C11B004D150C /* Images.xcassets in Resources */,
+				8F68EA6D18B2F5C8004D150C /* Icon120.png in Resources */,
 				8F68EA3B18B2C11B004D150C /* Main_iPhone.storyboard in Resources */,
+				8F68EA7718B3043B004D150C /* green1.png in Resources */,
+				8F68EA7218B2F6EB004D150C /* Default-568h@2x.png in Resources */,
+				8F68EA6E18B2F5C8004D150C /* Icon58.png in Resources */,
+				8F68EA6B18B2F5C8004D150C /* Icon1024.png in Resources */,
+				8F68EA7818B3043B004D150C /* red1.png in Resources */,
 				8F68EA3218B2C11B004D150C /* InfoPlist.strings in Resources */,
+				8F68EA6C18B2F5C8004D150C /* Icon1136.png in Resources */,
+				8F68EA6F18B2F5C8004D150C /* Icon80.png in Resources */,
+				8F68EA6A18B2F5C8004D150C /* Icon.pxm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,8 +448,7 @@
 		8F68EA5D18B2C11B004D150C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClockCommander/ClockCommander-Prefix.pch";
 				INFOPLIST_FILE = "ClockCommander/ClockCommander-Info.plist";
@@ -409,8 +460,7 @@
 		8F68EA5E18B2C11B004D150C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClockCommander/ClockCommander-Prefix.pch";
 				INFOPLIST_FILE = "ClockCommander/ClockCommander-Info.plist";
