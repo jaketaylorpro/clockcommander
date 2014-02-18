@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize clockData,currentClockModifier,currentClockName,currentClockTimeId;
+@synthesize clockData,currentClockModifier,currentClockName,currentClockTimeId,currentClockTimeStartTime,currentClockStartDay,currentClockId;
 
 NSString* DATABASE_NAME=@"com.jaketaylor.clockcommander";
 
@@ -27,7 +27,7 @@ NSString* COLUMN_CLOCK_TIME_CLOCK_ID=@"clock_id";
 NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID=@"clock_time_id";
 NSString* COLUMN_CLOCK_TIME_START_DAY=@"start_day";
 NSString* COLUMN_CLOCK_TIME_START_TIME=@"start_time";
-NSString* COLUMN_CLOCK_TIME_END_TIME=@"end_time";
+NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
 
 - (void)viewDidLoad
 {
@@ -92,17 +92,53 @@ NSString* COLUMN_CLOCK_TIME_END_TIME=@"end_time";
 {
     sqlite3_close(my_dbname);
 }
--(void)createClockTime:(NSInteger)clockId :(NSInteger)startDay :(NSInteger)startTime
+-(void)createClockTime:(int)clockId :(int)startDay :(int)startTime
 {
     NSString *insertStatement = [NSString stringWithFormat:
                                  @"insert into %@ (%@) values (%@)"
                                  ,TABLE_CLOCK_TIME
-                                 ,@[COLUMN_CLOCK_TIME_CLOCK_ID
-                                    ,COLUMN_CLOCK_TIME_START_DAY
-                                    ,COLUMN_CLOCK_TIME_START_TIME]
-                                 ,@[clockId
-                                    ,startDay
-                                    ,startTime]];
+                                 ,[NSString stringWithFormat:
+                                   @"%@,%@,%@"
+                                   ,COLUMN_CLOCK_TIME_CLOCK_ID
+                                   ,COLUMN_CLOCK_TIME_START_DAY
+                                   ,COLUMN_CLOCK_TIME_START_TIME]
+                                 ,[NSString stringWithFormat:
+                                   @"%d,%d,%d"
+                                   ,clockId
+                                   ,startDay
+                                   ,startTime]];
+    sqlite3_exec(my_dbname,[insertStatement UTF8String], NULL, NULL, NULL);//TODO error handling
+}
+-(void)updateClockTime:(int)clockTimeId
+{
+    NSCalendar* CALENDAR_GREGORIAN = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];//TODO find a way to load this just once
+    NSDate* now = [NSDate date];
+    NSDateComponents *nowC = [CALENDAR_GREGORIAN components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:now];
+    int duration =  [nowC second] + (60 * [nowC minute]) + (60*60* [nowC hour]) - *currentClockTimeStartTime;
+    NSString *updateStatement = [NSString stringWithFormat:
+                                 @"update %@ set %@ = %d where %@ = %d"
+                                 ,TABLE_CLOCK_TIME
+                                 ,COLUMN_CLOCK_TIME_DURATION
+                                 ,duration
+                                 ,COLUMN_CLOCK_TIME_CLOCK_TIME_ID
+                                 ,clockTimeId];
+    sqlite3_exec(my_dbname,[updateStatement UTF8String], NULL, NULL, NULL);//TODO error handling
+}
+
+
+-(IBAction)startClock:(id)sender
+{
+    NSCalendar* CALENDAR_GREGORIAN = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];//TODO find a way to load this just once
+    NSDate* now = [NSDate date];
+    NSDateComponents *nowC = [CALENDAR_GREGORIAN components:(NSYearCalendarUnit  | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:now];
+    *currentClockId=//TODO get select clock object from table UI element
+    *currentClockStartDay=[nowC day]+(100*[nowC month])+(10000*[nowC year]);
+    *currentClockTimeStartTime=[nowC second] + (60 * [nowC minute]) + (60*60* [nowC hour]);
     
+    [self createClockTime: *currentClockId:*currentClockStartDay:*currentClockTimeStartTime];
+}
+-(IBAction)stopClock:(id)sender
+{
+    [self updateClockTime: *currentClockTimeId];
 }
 @end

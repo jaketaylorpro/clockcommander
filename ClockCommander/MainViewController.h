@@ -13,7 +13,10 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *clockData;
+@property (atomic) int *currentClockTimeStartTime;
+@property (atomic) int *currentClockStartDay;
 @property (atomic) int *currentClockTimeId;
+@property (atomic) int *currentClockId;
 @property (atomic) float *currentClockModifier;
 @property (strong, atomic) NSString *currentClockName;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
@@ -25,7 +28,8 @@
 -(void) closeSqlite;
 -(void) loadClocks;
 -(void) loadCurrentClockTime;
--(void) createClockTime :(NSInteger)clockId :(NSInteger)startDay :(NSInteger)startTime;
+-(void) createClockTime :(int)clockId :(int)startDay :(int)startTime;
+-(void) updateClockTime :(int)clockTimeId;
 @end
 
 NSString* DATABASE_NAME;//="com.jaketaylor.clockcommander";
@@ -40,4 +44,4 @@ NSString* COLUMN_CLOCK_TIME_CLOCK_ID;// = "clock_id";
 NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID;// = "clock_time_id";
 NSString* COLUMN_CLOCK_TIME_START_DAY;// = "start_day";
 NSString* COLUMN_CLOCK_TIME_START_TIME;// = "start_time";
-NSString* COLUMN_CLOCK_TIME_END_TIME;// = "end_time";
+NSString* COLUMN_CLOCK_TIME_DURATION;// = "duration";
