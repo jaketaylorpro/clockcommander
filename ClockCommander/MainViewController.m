@@ -15,7 +15,7 @@
 @implementation MainViewController
 @synthesize clockData,currentClockModifier,currentClockName,currentClockTimeId,currentClockTimeStartTime,currentClockStartDay,currentClockId;
 
-NSString* DATABASE_NAME=@"com.jaketaylor.clockcommander";
+NSString* DATABASE_NAME=@"com.jaketaylor.clockcommander.db";
 
 NSString* TABLE_CLOCK=@"clock";
 NSString* COLUMN_CLOCK_CLOCK_ID=@"clock_id";
@@ -28,16 +28,29 @@ NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID=@"clock_time_id";
 NSString* COLUMN_CLOCK_TIME_START_DAY=@"start_day";
 NSString* COLUMN_CLOCK_TIME_START_TIME=@"start_time";
 NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
+UITableView* myTableView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //initialize properties
+    clockData=[[NSMutableArray alloc] initWithCapacity:10];
 	// Do any additional setup after loading the view, typically from a nib.
     [self openSqlite];
     [self loadClocks];
     [self loadCurrentClockTime];
 }
-
+- (void)dealloc {
+    [self closeSqlite];
+    clockData=nil;
+    currentClockModifier=nil;
+    currentClockName=nil;
+    currentClockTimeId=nil;
+    currentClockTimeStartTime=nil;
+    currentClockStartDay=nil;
+    currentClockId=nil;
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -124,7 +137,36 @@ NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
                                  ,clockTimeId];
     sqlite3_exec(my_dbname,[updateStatement UTF8String], NULL, NULL, NULL);//TODO error handling
 }
-
+-(void)loadClocks
+{
+    NSString *selectStatement = [NSString stringWithFormat:
+                                 @"select %@,%@,%@ from %@"
+                                 ,COLUMN_CLOCK_CLOCK_ID
+                                 ,COLUMN_CLOCK_CLOCK_NAME
+                                 ,COLUMN_CLOCK_MODIFIER
+                                 ,TABLE_CLOCK];
+    sqlite3_exec(my_dbname, [selectStatement UTF8String],loadClocksCallback,(__bridge void *)self,nil);
+}
+int loadClocksCallback(void *myself, int columnCount, char **values, char **columns)
+{
+    return [(__bridge MainViewController *)myself loadClockData:myself columnCount:columnCount values:values columns:columns];
+}
+-(int)loadClockData:(void *)myself columnCount:(int)columnCount values:(char **)values columns:(char **)columns
+{
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc] initWithCapacity:columnCount];
+    for(int i=0;i<columnCount;i++)
+    {
+        [dict setValue:[NSString stringWithCString:values[i] encoding:NSUTF8StringEncoding]
+            forKey:[NSString stringWithCString:columns[i] encoding:NSUTF8StringEncoding]];
+    }
+    [clockData addObject:dict];
+    [myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+    return 0;
+}
+-(void)loadCurrentClockTime
+{
+    
+}
 
 -(IBAction)startClock:(id)sender
 {
@@ -141,4 +183,27 @@ NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
 {
     [self updateClockTime: *currentClockTimeId];
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    myTableView=tableView;
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [clockData count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *MyIdentifier = @"MyReuseIdentifier";//TODO do i need to use a row id here?
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+    }
+    NSDictionary *clockDict=[clockData objectAtIndex:[indexPath indexAtPosition:1]];
+    cell.textLabel.text=[NSString stringWithFormat:@"%d:%@"
+                         ,[[clockDict objectForKey:COLUMN_CLOCK_CLOCK_ID] integerValue]
+                         ,[clockDict objectForKey:COLUMN_CLOCK_CLOCK_NAME]];
+    return cell;
+}
+
 @end

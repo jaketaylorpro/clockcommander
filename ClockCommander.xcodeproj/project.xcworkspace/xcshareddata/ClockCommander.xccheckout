@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BDF68097-024A-4310-8F3E-177D9C266909</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ClockCommander</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>488EC25B-2DB7-405B-8AC1-A2F089B2014B</key>
+		<string>ssh://github.com/jaketaylorpro/clockcommander</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ClockCommander.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>05AF551E-A850-4652-83DE-46C08B4D4A7D</key>
+		<string>../../ClockCommander/ClockCommanderArt</string>
+		<key>488EC25B-2DB7-405B-8AC1-A2F089B2014B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jaketaylorpro/clockcommander</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>488EC25B-2DB7-405B-8AC1-A2F089B2014B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>488EC25B-2DB7-405B-8AC1-A2F089B2014B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ClockCommander</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>05AF551E-A850-4652-83DE-46C08B4D4A7D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ClockCommanderArt</string>
+		</dict>
+	</array>
+</dict>
+</plist>

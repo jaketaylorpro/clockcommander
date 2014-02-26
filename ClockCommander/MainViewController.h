@@ -8,7 +8,7 @@
 
 #import "FlipsideViewController.h"
 #import <sqlite3.h>
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPopoverControllerDelegate, UITableViewDataSource> {
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPopoverControllerDelegate, UITableViewDataSource,UITableViewDelegate> {
     sqlite3 *my_dbname;
 }
 
