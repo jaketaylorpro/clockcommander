@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F42DCE618C3C968004AF625 /* CCClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F42DCE518C3C968004AF625 /* CCClock.m */; };
+		8F42DCE918C3CA58004AF625 /* CCClockTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F42DCE818C3CA58004AF625 /* CCClockTime.m */; };
+		8F42DCEF18C3F811004AF625 /* CCDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F42DCEE18C3F811004AF625 /* CCDataMgr.m */; };
+		8F42DCF218C4199B004AF625 /* BulkLoadingDelagate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F42DCF118C4199B004AF625 /* BulkLoadingDelagate.m */; };
+		8F42DCF518C44E00004AF625 /* SingleLoadingDelagate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F42DCF418C44E00004AF625 /* SingleLoadingDelagate.m */; };
 		8F68EA2818B2C11B004D150C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA2718B2C11B004D150C /* Foundation.framework */; };
 		8F68EA2A18B2C11B004D150C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA2918B2C11B004D150C /* CoreGraphics.framework */; };
 		8F68EA2C18B2C11B004D150C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA2B18B2C11B004D150C /* UIKit.framework */; };
@@ -62,6 +67,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F42DCE418C3C968004AF625 /* CCClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCClock.h; sourceTree = "<group>"; };
+		8F42DCE518C3C968004AF625 /* CCClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCClock.m; sourceTree = "<group>"; };
+		8F42DCE718C3CA58004AF625 /* CCClockTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCClockTime.h; sourceTree = "<group>"; };
+		8F42DCE818C3CA58004AF625 /* CCClockTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCClockTime.m; sourceTree = "<group>"; };
+		8F42DCED18C3F811004AF625 /* CCDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDataMgr.h; sourceTree = "<group>"; };
+		8F42DCEE18C3F811004AF625 /* CCDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDataMgr.m; sourceTree = "<group>"; };
+		8F42DCF018C4199B004AF625 /* BulkLoadingDelagate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkLoadingDelagate.h; sourceTree = "<group>"; };
+		8F42DCF118C4199B004AF625 /* BulkLoadingDelagate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkLoadingDelagate.m; sourceTree = "<group>"; };
+		8F42DCF318C44E00004AF625 /* SingleLoadingDelagate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLoadingDelagate.h; sourceTree = "<group>"; };
+		8F42DCF418C44E00004AF625 /* SingleLoadingDelagate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLoadingDelagate.m; sourceTree = "<group>"; };
 		8F68EA2418B2C11B004D150C /* ClockCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F68EA2718B2C11B004D150C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8F68EA2918B2C11B004D150C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -180,8 +195,18 @@
 				8F68EA4018B2C11B004D150C /* MainViewController.m */,
 				8F68EA4218B2C11B004D150C /* FlipsideViewController.h */,
 				8F68EA4318B2C11B004D150C /* FlipsideViewController.m */,
-				8F68EA4518B2C11B004D150C /* Images.xcassets */,
+				8F42DCE418C3C968004AF625 /* CCClock.h */,
+				8F42DCE518C3C968004AF625 /* CCClock.m */,
+				8F42DCE718C3CA58004AF625 /* CCClockTime.h */,
+				8F42DCE818C3CA58004AF625 /* CCClockTime.m */,
+				8F42DCED18C3F811004AF625 /* CCDataMgr.h */,
+				8F42DCEE18C3F811004AF625 /* CCDataMgr.m */,
+				8F42DCF018C4199B004AF625 /* BulkLoadingDelagate.h */,
+				8F42DCF118C4199B004AF625 /* BulkLoadingDelagate.m */,
+				8F42DCF318C44E00004AF625 /* SingleLoadingDelagate.h */,
+				8F42DCF418C44E00004AF625 /* SingleLoadingDelagate.m */,
 				8F68EA2E18B2C11B004D150C /* Supporting Files */,
+				8F68EA4518B2C11B004D150C /* Images.xcassets */,
 			);
 			path = ClockCommander;
 			sourceTree = "<group>";
@@ -371,9 +396,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F68EA3818B2C11B004D150C /* AppDelegate.m in Sources */,
+				8F42DCF218C4199B004AF625 /* BulkLoadingDelagate.m in Sources */,
+				8F42DCE918C3CA58004AF625 /* CCClockTime.m in Sources */,
 				8F68EA4118B2C11B004D150C /* MainViewController.m in Sources */,
 				8F68EA4418B2C11B004D150C /* FlipsideViewController.m in Sources */,
+				8F42DCF518C44E00004AF625 /* SingleLoadingDelagate.m in Sources */,
+				8F42DCE618C3C968004AF625 /* CCClock.m in Sources */,
 				8F68EA3418B2C11B004D150C /* main.m in Sources */,
+				8F42DCEF18C3F811004AF625 /* CCDataMgr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,41 +7,19 @@
 //
 
 #import "FlipsideViewController.h"
+#import "CCClock.h"
+#import "CCClockTime.h"
+#import "CCDataMgr.h"
 #import <sqlite3.h>
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPopoverControllerDelegate, UITableViewDataSource,UITableViewDelegate> {
-    sqlite3 *my_dbname;
+    sqlite3 *sqliteConnection;
 }
 
-@property (strong, nonatomic) NSMutableArray *clockData;
-@property (atomic) int *currentClockTimeStartTime;
-@property (atomic) int *currentClockStartDay;
-@property (atomic) int *currentClockTimeId;
-@property (atomic) int *currentClockId;
-@property (atomic) float *currentClockModifier;
-@property (strong, atomic) NSString *currentClockName;
+@property (strong, nonatomic) CCClockTime *currentClockTime;
+@property (strong, nonatomic) CCDataMgr *dataMgr;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 
+-(void)continueClockTime:(CCClockTime *)clockTime;
 -(IBAction)startClock:(id)sender;
 -(IBAction)stopClock:(id)sender;
-
--(void) openSqlite;
--(void) closeSqlite;
--(void) loadClocks;
--(void) loadCurrentClockTime;
--(void) createClockTime :(int)clockId :(int)startDay :(int)startTime;
--(void) updateClockTime :(int)clockTimeId;
 @end
-
-NSString* DATABASE_NAME;//="com.jaketaylor.clockcommander";
-
-NSString* TABLE_CLOCK;// = "clock";
-NSString* COLUMN_CLOCK_CLOCK_ID;// = "clock_id";
-NSString* COLUMN_CLOCK_CLOCK_NAME;// = "clock_name";
-NSString* COLUMN_CLOCK_MODIFIER;// = "modifier";
-
-NSString* TABLE_CLOCK_TIME;// = "clock_time";
-NSString* COLUMN_CLOCK_TIME_CLOCK_ID;// = "clock_id";
-NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID;// = "clock_time_id";
-NSString* COLUMN_CLOCK_TIME_START_DAY;// = "start_day";
-NSString* COLUMN_CLOCK_TIME_START_TIME;// = "start_time";
-NSString* COLUMN_CLOCK_TIME_DURATION;// = "duration";
