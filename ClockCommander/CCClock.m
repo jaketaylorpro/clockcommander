@@ -9,6 +9,6 @@
 #import "CCClock.h"
 
 @implementation CCClock
-@synthesize clockId,modifier,name;
+@synthesize clock_id,modifier,name;
 
 @end

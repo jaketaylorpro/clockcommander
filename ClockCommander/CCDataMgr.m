@@ -15,7 +15,7 @@ NSString* DATABASE_NAME=@"com.jaketaylor.clockcommander.db";
 
 NSString* TABLE_CLOCK=@"clock";
 NSString* COLUMN_CLOCK_CLOCK_ID=@"clock_id";
-NSString* COLUMN_CLOCK_CLOCK_NAME=@"clock_name";
+NSString* COLUMN_CLOCK_NAME=@"name";
 NSString* COLUMN_CLOCK_MODIFIER=@"modifier";
 
 NSString* TABLE_CLOCK_TIME=@"clock_time";
@@ -25,6 +25,9 @@ NSString* COLUMN_CLOCK_TIME_START_DAY=@"start_day";
 NSString* COLUMN_CLOCK_TIME_START_TIME=@"start_time";
 NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
 
+
+NSString* VIEW_GRAND_TOTAL=@"grand_total";
+NSString* COLUMN_GRAND_TOTAL_GRAND_TOTAL=@"grand_total";
 
 //getters
 -(CCClock *)getClockById:(int)id
@@ -67,7 +70,7 @@ NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
                                  ,TABLE_CLOCK
                                  ,[NSString stringWithFormat:
                                    @"%@,%@"
-                                   ,COLUMN_CLOCK_CLOCK_NAME
+                                   ,COLUMN_CLOCK_NAME
                                    ,COLUMN_CLOCK_MODIFIER]
                                  ,[NSString stringWithFormat:
                                    @"%@,%f"
@@ -89,14 +92,14 @@ NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
                                  ,COLUMN_CLOCK_TIME_DURATION
                                  ,duration
                                  ,COLUMN_CLOCK_TIME_CLOCK_TIME_ID
-                                 ,clockTime.clockTimeId];
+                                 ,clockTime.clock_time_id];
     sqlite3_exec(connection,[updateStatement UTF8String], NULL, NULL, NULL);//TODO error handling
 }
 -(CCClockTime *)loadCurrentClockTimeWithConnection:(sqlite3 *)connection withCallback:(void(^)(void))callbackBlock
 {
     CCClockTime *clockTime=[CCClockTime alloc];
     SingleLoadingDelagate *ld=[SingleLoadingDelagate createWithManager:self
-                                                              withData:clockTime
+                                                            withObject:clockTime
                                                           withCallback:callbackBlock];
     NSString *selectStatement = [NSString stringWithFormat:
                                  @"select %@,%@,%@,%@ from %@ where %@ is null"
@@ -107,12 +110,11 @@ NSString* COLUMN_CLOCK_TIME_DURATION=@"duration";
                                  ,TABLE_CLOCK_TIME
                                  ,COLUMN_CLOCK_TIME_DURATION];
     sqlite3_exec(connection, [selectStatement UTF8String],loadCallback,(__bridge void *)ld,nil);
-    allClocks=dict;
     return clockTime;
 }
 int loadCallback(void *ld,int columnCount, char **values,char **columns)
 {
-    return [(_bridge SingleLoadingDelaget*)ld set:ld withColumnCount:columnCount withValues:values with Columns:columns];
+    return [(__bridge SingleLoadingDelagate *)ld set:ld withColumnCount:columnCount withValues:values withColumns:columns];
 }
 -(NSMutableDictionary *)loadClocksWithConnection:(sqlite3 *)connection withCallback:(void(^)(void))callbackBlock
 {
@@ -120,12 +122,12 @@ int loadCallback(void *ld,int columnCount, char **values,char **columns)
     BulkLoadingDelagate *ld=[BulkLoadingDelagate createWithManager:self
                                                   withData:dict
                                                   withType:[CCClock class]
-                                              withIdGetter:@selector(getClockId:)
+                                              withIdGetter:@selector(getClock_id)
                                               withCallback:callbackBlock];
     NSString *selectStatement = [NSString stringWithFormat:
                                  @"select %@,%@,%@ from %@"
                                  ,COLUMN_CLOCK_CLOCK_ID
-                                 ,COLUMN_CLOCK_CLOCK_NAME
+                                 ,COLUMN_CLOCK_NAME
                                  ,COLUMN_CLOCK_MODIFIER
                                  ,TABLE_CLOCK];
     sqlite3_exec(connection, [selectStatement UTF8String],bulkLoadCallback,(__bridge void *)ld,nil);
@@ -138,7 +140,7 @@ int loadCallback(void *ld,int columnCount, char **values,char **columns)
     BulkLoadingDelagate *ld=[BulkLoadingDelagate createWithManager:self
                                                   withData:dict
                                                   withType:[CCClockTime class]
-                                              withIdGetter:@selector(getClockTimeId:)
+                                              withIdGetter:@selector(getClock_time_id)
                                               withCallback:callbackBlock];
     NSString *selectStatement = [NSString stringWithFormat:
                                  @"select %@,%@,%@,%@,%@ from %@"
@@ -154,9 +156,19 @@ int loadCallback(void *ld,int columnCount, char **values,char **columns)
 }
 int bulkLoadCallback(void *ld, int columnCount, char **values, char **columns)
 {
-    return [(__bridge BulkLoadingDelagate*)ld load:ld withColumnCount:columnCount withValues:values withColumns:columns];
+    return [(__bridge BulkLoadingDelagate *)ld load:ld withColumnCount:columnCount withValues:values withColumns:columns];
 }
-
-
-
+-(NSNumber *)loadGrandTotalWithConnection:(sqlite3 *)connection withCallback:(void (^)(void))callbackBlock
+{
+    NSNumber *score=[NSNumber alloc];
+    SingleLoadingDelagate *ld=[SingleLoadingDelagate createWithManager:self
+                                                            withObject:score
+                                                          withCallback:callbackBlock];
+    NSString *selectStatement = [NSString stringWithFormat:
+                                 @"select %@ from %@"
+                                 ,COLUMN_GRAND_TOTAL_GRAND_TOTAL
+                                 ,VIEW_GRAND_TOTAL];
+    sqlite3_exec(connection, [selectStatement UTF8String],loadCallback,(__bridge void *)ld,nil);
+    return score;
+}
 @end

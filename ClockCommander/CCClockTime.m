@@ -9,6 +9,6 @@
 #import "CCClockTime.h"
 
 @implementation CCClockTime
-@synthesize clockTimeId,clockId,startDay,startTime,duration;
+@synthesize clock_time_id,clockId,startDay,startTime,duration;
 
 @end

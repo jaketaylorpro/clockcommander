@@ -17,8 +17,10 @@
 
 @property (strong, nonatomic) CCClockTime *currentClockTime;
 @property (strong, nonatomic) CCDataMgr *dataMgr;
+@property (strong, nonatomic) NSNumber *grandTotalScore;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 
+-(void)startGrandCounter;
 -(void)continueClockTime:(CCClockTime *)clockTime;
 -(IBAction)startClock:(id)sender;
 -(IBAction)stopClock:(id)sender;

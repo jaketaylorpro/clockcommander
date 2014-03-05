@@ -10,21 +10,22 @@
 
 @implementation SingleLoadingDelagate
 @synthesize obj,mgr;
-+(SingleLoadingDelagate *)createWithManager:(CCDataMgr *)manager withData:(NSObject *)data withCallback:(void(^)(void))callbackBlock
++(SingleLoadingDelagate *)createWithManager:(NSObject *)manager withObject:(NSObject *)dataObject withCallback:(void(^)(void))callbackBlock
 {
     SingleLoadingDelagate *ld =[SingleLoadingDelagate alloc];
     ld.mgr=manager;
-    ld.obj=data;
+    ld.obj=dataObject;
     ld.callbackBlock=callbackBlock;
     return ld;
 }
--(int)load:(void *)ld withColumnCount:(int)columnCount withValues:(char **)values withColumns:(char **)columns
+-(int)set:(void *)ld withColumnCount:(int)columnCount withValues:(char **)values withColumns:(char **)columns
 {
-    SingleLoadingDelagate *loadingDelagate=(__bridge_transfer SingleLoadingDelagate *)ld;
+    //todo handle accidental multiple row return
+    SingleLoadingDelagate *loadingDelagate=(__bridge SingleLoadingDelagate *)ld;
     for(int i=0;i<columnCount;i++)
     {
-        [loadingDelagate.obj setValue:[NSString stringWithCString:values[i] encoding:NSUTF8StringEncoding]
-               forKey:[NSString stringWithCString:columns[i] encoding:NSUTF8StringEncoding]];
+        [obj setValue:[NSString stringWithCString:values[i] encoding:NSASCIIStringEncoding]
+               forKey:[NSString stringWithCString:columns[i] encoding:NSASCIIStringEncoding]];
     }
     loadingDelagate.callbackBlock();
     return 0;

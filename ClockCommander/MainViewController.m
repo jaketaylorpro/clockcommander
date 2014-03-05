@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize dataMgr,currentClockTime,flipsidePopoverController;
+@synthesize dataMgr,currentClockTime,flipsidePopoverController,grandTotalScore;
 
 
 UITableView* myTableView;
@@ -21,15 +21,27 @@ UITableView* myTableView;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //initialize properties
-    dataMgr = [CCDataMgr alloc];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self openSqlite];
-    [dataMgr loadClocksWithConnection:sqliteConnection
-                         withCallback:^{[myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];}];
-    currentClockTime=(CCClockTime *)[dataMgr loadCurrentClockTimeWithConnection:sqliteConnection
-                                                withCallback:^{[self continueClockTime:currentClockTime];}];
-    //todo need to load grand total
+    @try {
+        //initialize properties
+        dataMgr = [CCDataMgr alloc];
+        // Do any additional setup after loading the view, typically from a nib.
+        [self openSqlite];
+        [dataMgr loadClocksWithConnection:sqliteConnection
+                             withCallback:^{[myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];}];
+        currentClockTime=(CCClockTime *)[dataMgr loadCurrentClockTimeWithConnection:sqliteConnection
+                                                                       withCallback:^{[self continueClockTime:currentClockTime];}];
+        grandTotalScore=(NSNumber *)[dataMgr loadGrandTotalWithConnection:sqliteConnection withCallback:^{[self startGrandCounter];}];
+        //todo need to load grand total
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception: %@;%@"
+              ,exception.name
+              ,exception.reason);
+    }
+    @finally {
+
+    }
+    
 }
 - (void)dealloc {
     [self closeSqlite];
@@ -91,6 +103,10 @@ UITableView* myTableView;
 {
     sqlite3_close(sqliteConnection);
 }
+-(void)startGrandCounter
+{
+    //
+}
 -(void)continueClockTime:(CCClockTime *)clockTime
 {
     //TODO need to load grant total
@@ -102,7 +118,7 @@ UITableView* myTableView;
     NSDateComponents *nowC = [CALENDAR_GREGORIAN components:(NSYearCalendarUnit  | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:now];
     CCClock *selectedClock=[dataMgr getClockByIndex:[[myTableView indexPathForSelectedRow] indexAtPosition:1]];
     CCClockTime *newClockTime=[CCClockTime init];
-    newClockTime.clockId=selectedClock.clockId;
+    newClockTime.clockId=selectedClock.clock_id;
     newClockTime.startDay=[nowC day]+(100*[nowC month])+(10000*[nowC year]);
     newClockTime.startTime=[nowC second] + (60 * [nowC minute]) + (60*60* [nowC hour]);
     [dataMgr saveClockTime:newClockTime withConnection:sqliteConnection];
@@ -130,7 +146,7 @@ UITableView* myTableView;
     
     CCClock *clock=[dataMgr getClockByIndex:[indexPath indexAtPosition:1]];
     cell.textLabel.text=[NSString stringWithFormat:@"%d:%@"
-                         ,clock.clockId
+                         ,clock.clock_id
                          ,clock.name];
     return cell;
 }

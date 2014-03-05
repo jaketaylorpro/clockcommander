@@ -11,6 +11,7 @@
 #import "CCClockTime.h"
 #import "CCClock.h"
 #import "BulkLoadingDelagate.h"
+#import "SingleLoadingDelagate.h"
 
 @interface CCDataMgr : NSObject
 
@@ -31,13 +32,14 @@
 -(NSObject *) loadCurrentClockTimeWithConnection:(sqlite3 *)connection withCallback:(void(^)(void))callbackBlock;
 -(void)saveClockTime:(CCClockTime *)clockTime withConnection:(sqlite3 *)connection;
 -(void)updateClockTime:(CCClockTime *)clockTime withConnection:(sqlite3 *)connection;
+-(NSNumber *) loadGrandTotalWithConnection:(sqlite3 *)connection withCallback:(void(^)(void))callbackBlock;
 @end
 
 NSString* DATABASE_NAME;//="com.jaketaylor.clockcommander";
 
 NSString* TABLE_CLOCK;// = "clock";
 NSString* COLUMN_CLOCK_CLOCK_ID;// = "clock_id";
-NSString* COLUMN_CLOCK_CLOCK_NAME;// = "clock_name";
+NSString* COLUMN_CLOCK_NAME;// = "name";
 NSString* COLUMN_CLOCK_MODIFIER;// = "modifier";
 
 NSString* TABLE_CLOCK_TIME;// = "clock_time";
@@ -46,3 +48,6 @@ NSString* COLUMN_CLOCK_TIME_CLOCK_TIME_ID;// = "clock_time_id";
 NSString* COLUMN_CLOCK_TIME_START_DAY;// = "start_day";
 NSString* COLUMN_CLOCK_TIME_START_TIME;// = "start_time";
 NSString* COLUMN_CLOCK_TIME_DURATION;// = "duration";
+
+NSString* VIEW_GRAND_TOTAL;//="grand_total"
+NSString* COLUMN_GRAND_TOTAL_GRAND_TOTAL;//="grand_total"

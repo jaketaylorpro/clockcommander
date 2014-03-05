@@ -10,7 +10,7 @@
 
 @implementation BulkLoadingDelagate
 @synthesize dict,mgr,type,idGetter;
-+(BulkLoadingDelagate *)createWithManager:(CCDataMgr *)manager withData:(NSMutableDictionary *)dataDict withType:(Class)dataType withIdGetter:(SEL)idGetterSel withCallback:(void(^)(void))callbackBlock
++(BulkLoadingDelagate *)createWithManager:(NSObject *)manager withData:(NSMutableDictionary *)dataDict withType:(Class)dataType withIdGetter:(SEL)idGetterSel withCallback:(void(^)(void))callbackBlock
 {
     BulkLoadingDelagate *ld =[BulkLoadingDelagate alloc];
     ld.mgr=manager;
@@ -23,12 +23,12 @@
 -(int)load:(void *)ld withColumnCount:(int)columnCount withValues:(char **)values withColumns:(char **)columns
 {
     
-    BulkLoadingDelagate *loadingDelagate=(__bridge_transfer BulkLoadingDelagate *)ld;
+    BulkLoadingDelagate *loadingDelagate=(__bridge BulkLoadingDelagate *)ld;
     id obj=[loadingDelagate.type alloc];
     for(int i=0;i<columnCount;i++)
     {
-        [obj setValue:[NSString stringWithCString:values[i] encoding:NSUTF8StringEncoding]
-                 forKey:[NSString stringWithCString:columns[i] encoding:NSUTF8StringEncoding]];
+        [obj setValue:[NSString stringWithCString:values[i] encoding:NSASCIIStringEncoding]
+                 forKey:[NSString stringWithCString:columns[i] encoding:NSASCIIStringEncoding]];
     }
     [loadingDelagate.dict setValue:obj forKey:[NSString stringWithFormat:@"%d"
                                                 ,(int)[obj performSelector:loadingDelagate.idGetter]]];

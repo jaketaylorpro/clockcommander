@@ -7,19 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CCDataMgr.h"
 @interface SingleLoadingDelagate : NSObject
 
-@property (strong,nonatomic) CCDataMgr *mgr;
+@property (strong,nonatomic) NSObject *mgr;
 @property (strong,nonatomic) NSObject *obj;
 @property (nonatomic,assign) Class type;
 @property (nonatomic,assign) SEL idGetter;
 @property (nonatomic,copy) void(^callbackBlock)(void);
 
-+(SingleLoadingDelagate *)createWithManager:(CCDataMgr *)manager
-                                 withData:(NSMutableDictionary *)dataArray
-                             withCallback:(void(^)(void))callbackBlock;
++(SingleLoadingDelagate *)createWithManager:(NSObject *)manager
+                                 withObject:(NSObject *)dataObject
+                               withCallback:(void(^)(void))callbackBlock;
 
--(int)load:(void *)ld withColumnCount:(int)columnCount withValues:(char **)values withColumns:(char **)columns;
+-(int)set:(void *)ld withColumnCount:(int)columnCount withValues:(char **)values withColumns:(char **)columns;
 
 @end
