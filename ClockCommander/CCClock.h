@@ -10,7 +10,7 @@
 
 @interface CCClock : NSObject
 
-@property (atomic,getter = getClock_id) int clock_id;
+@property (atomic,getter = getClock_id,setter = setClock_id:) int clock_id;
 @property (atomic) float modifier;
 @property (strong, atomic) NSString *name;
 

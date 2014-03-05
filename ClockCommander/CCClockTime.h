@@ -10,10 +10,12 @@
 
 @interface CCClockTime : NSObject
 
-@property (atomic,getter = getClock_time_id) int clock_time_id;
-@property (atomic) int clockId;
-@property (atomic) int startTime;
-@property (atomic) int startDay;
+@property (atomic,getter = getClock_time_id,setter = setClock_time_id:) int clock_time_id;
+@property (atomic) int clock_id;
+@property (atomic) NSString *clock_name;
+@property (atomic) int start_time;
+@property (atomic) int start_day;
+@property (atomic) int start_day_seconds;
 @property (atomic) int duration;
 
 @end

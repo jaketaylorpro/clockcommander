@@ -32,6 +32,8 @@
 		8F68EA7418B3033B004D150C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F68EA7318B3033B004D150C /* libsqlite3.dylib */; };
 		8F68EA7718B3043B004D150C /* green1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA7518B3043B004D150C /* green1.png */; };
 		8F68EA7818B3043B004D150C /* red1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F68EA7618B3043B004D150C /* red1.png */; };
+		8FD45BC418C6DBB000B01E85 /* SaveDelagate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD45BC318C6DBB000B01E85 /* SaveDelagate.m */; };
+		8FD45BC718C6F97B00B01E85 /* GrandTotal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD45BC618C6F97B00B01E85 /* GrandTotal.m */; };
 		8FDF6EB318BD9D3E0080F40A /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF6EA318BD9D3E0080F40A /* iTunesArtwork@2x.png */; };
 		8FDF6EB418BD9D3E0080F40A /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF6EA418BD9D3E0080F40A /* iTunesArtwork.png */; };
 		8FDF6EB518BD9D3E0080F40A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF6EA518BD9D3E0080F40A /* Icon@2x.png */; };
@@ -103,6 +105,10 @@
 		8F68EA7318B3033B004D150C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8F68EA7518B3043B004D150C /* green1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green1.png; sourceTree = "<group>"; };
 		8F68EA7618B3043B004D150C /* red1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red1.png; sourceTree = "<group>"; };
+		8FD45BC218C6DBB000B01E85 /* SaveDelagate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveDelagate.h; sourceTree = "<group>"; };
+		8FD45BC318C6DBB000B01E85 /* SaveDelagate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveDelagate.m; sourceTree = "<group>"; };
+		8FD45BC518C6F97B00B01E85 /* GrandTotal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrandTotal.h; sourceTree = "<group>"; };
+		8FD45BC618C6F97B00B01E85 /* GrandTotal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrandTotal.m; sourceTree = "<group>"; };
 		8FDF6EA318BD9D3E0080F40A /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8FDF6EA418BD9D3E0080F40A /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		8FDF6EA518BD9D3E0080F40A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -205,6 +211,10 @@
 				8F42DCF118C4199B004AF625 /* BulkLoadingDelagate.m */,
 				8F42DCF318C44E00004AF625 /* SingleLoadingDelagate.h */,
 				8F42DCF418C44E00004AF625 /* SingleLoadingDelagate.m */,
+				8FD45BC218C6DBB000B01E85 /* SaveDelagate.h */,
+				8FD45BC318C6DBB000B01E85 /* SaveDelagate.m */,
+				8FD45BC518C6F97B00B01E85 /* GrandTotal.h */,
+				8FD45BC618C6F97B00B01E85 /* GrandTotal.m */,
 				8F68EA2E18B2C11B004D150C /* Supporting Files */,
 				8F68EA4518B2C11B004D150C /* Images.xcassets */,
 			);
@@ -398,8 +408,10 @@
 				8F68EA3818B2C11B004D150C /* AppDelegate.m in Sources */,
 				8F42DCF218C4199B004AF625 /* BulkLoadingDelagate.m in Sources */,
 				8F42DCE918C3CA58004AF625 /* CCClockTime.m in Sources */,
+				8FD45BC718C6F97B00B01E85 /* GrandTotal.m in Sources */,
 				8F68EA4118B2C11B004D150C /* MainViewController.m in Sources */,
 				8F68EA4418B2C11B004D150C /* FlipsideViewController.m in Sources */,
+				8FD45BC418C6DBB000B01E85 /* SaveDelagate.m in Sources */,
 				8F42DCF518C44E00004AF625 /* SingleLoadingDelagate.m in Sources */,
 				8F42DCE618C3C968004AF625 /* CCClock.m in Sources */,
 				8F68EA3418B2C11B004D150C /* main.m in Sources */,
